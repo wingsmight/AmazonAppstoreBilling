@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class BuyCoinsButton : MonoBehaviour
 {
-    private const string BoughtProductId = ProductContainer.goldCoins100;
+    private readonly IapProduct BoughtProduct = ProductContainer.Instance.goldCoins100;
 
     [SerializeField] private Button button;
 
@@ -19,7 +19,7 @@ public class BuyCoinsButton : MonoBehaviour
 
     private void OnClick()
     {
-        AmazonAppstoreBilling.Instance.BuyProduct(BoughtProductId, OnPurchased, OnPurchaseFailed);
+        AmazonAppstoreBilling.Instance.BuyProduct(BoughtProduct.Id, OnPurchased, OnPurchaseFailed);
     }
 
     private void OnPurchased(string productID)

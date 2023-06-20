@@ -134,7 +134,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 1.0
+  bundleVersion: 1.0.1
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -155,7 +155,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.wingsmight.AmazonAppstoreBilling
+    Android: dotbake.nighty.night.fairy.tale.good.sleep.story.game.kids.app
     Standalone: com.DefaultCompany.2DProject
   buildNumber:
     Standalone: 0

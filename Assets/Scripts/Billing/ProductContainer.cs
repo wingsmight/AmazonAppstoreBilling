@@ -1,8 +1,30 @@
-public static class ProductContainer
-{
-    public static string[] productIds = new string[] {
-        goldCoins100,
-    };
+using UnityEngine.Purchasing;
 
-    public const string goldCoins100 = "100_gold_coins";
+public class ProductContainer
+{
+    public readonly IapProduct[] products;
+
+    public readonly IapProduct goldCoins100 = new IapProduct("dotbake_test_purchase", ProductType.Consumable);
+    public readonly IapProduct monthSubscription = new IapProduct("month_subscribe_2", ProductType.Subscription);
+
+    private static ProductContainer instance;
+
+    private ProductContainer()
+    {
+        products = new IapProduct[] {
+            goldCoins100,
+            monthSubscription,
+        };
+    }
+
+    public static ProductContainer Instance
+    {
+        get
+        {
+            if (instance == null)
+                instance = new ProductContainer();
+
+            return instance;
+        }
+    }
 }

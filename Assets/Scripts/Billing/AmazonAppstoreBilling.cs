@@ -4,8 +4,6 @@ using UnityEngine.Purchasing.Extension;
 
 public class AmazonAppstoreBilling : IDetailedStoreListener
 {
-    private const string ProductIdSuffix = "_Amazon";
-
     public event Action Initialized;
     public event Action<InitializationFailureReason, string> InitializationFailed;
     public event Action<string> Purchased;
@@ -20,11 +18,9 @@ public class AmazonAppstoreBilling : IDetailedStoreListener
     private AmazonAppstoreBilling()
     {
         var builder = ConfigurationBuilder.Instance(StandardPurchasingModule.Instance());
-        foreach (var productId in ProductContainer.productIds)
+        foreach (var product in ProductContainer.Instance.products)
         {
-            builder.AddProduct(productId, ProductType.Consumable, new IDs() {
-                { productId + ProductIdSuffix, AmazonApps.Name }
-            });
+            builder.AddProduct(product.Id, product.Type);
         }
 
         UnityPurchasing.Initialize(this, builder);
